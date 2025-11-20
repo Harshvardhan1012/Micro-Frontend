@@ -21,7 +21,6 @@ export class AppHelloComponent implements AfterViewInit, OnDestroy {
   async ngAfterViewInit() {
     await ReactService.initialize();
     this.HelloComponent = await ReactComponentRegistry.loadComponent('HelloComponent', 'hostApp');
-    console.log('Loaded HelloComponent:', this.HelloComponent);
     this.root = ReactService.createReactRoot(this.containerRef.nativeElement);
     this.renderHelloComponent();
   }
@@ -32,7 +31,6 @@ export class AppHelloComponent implements AfterViewInit, OnDestroy {
       text: 'harsh ',
       name: 'harsh User',
     });
-    debugger
     this.root.render(cardElement);
   }
 

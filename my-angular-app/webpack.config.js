@@ -10,6 +10,8 @@ module.exports = {
     static: {
       directory: path.join(__dirname, 'public'),
     },
+    // Serve index.html for all paths so client-side routing works (HTML5 pushState)
+    historyApiFallback: true,
     headers: {
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
@@ -22,7 +24,7 @@ module.exports = {
     extensions: ['.ts', '.js', '.html'],
     alias: {
       react: require.resolve('react'),
-       'react-dom': path.resolve(__dirname, 'node_modules/react-dom'),
+      'react-dom': path.resolve(__dirname, 'node_modules/react-dom'),
     },
   },
   module: {

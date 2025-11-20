@@ -35,17 +35,14 @@ export class ReactService {
       // Load React module
       const reactModule = await import('react');
       this.React = (reactModule as any).default || reactModule;
-      debugger
-
+      
       // Try to import the modern client entry first (React 18+)
       let reactDOMClientModule: any = null;
-      
+
       try {
         reactDOMClientModule = await import('react-dom/client');
-        debugger;
         if (reactDOMClientModule) {
           this.createRoot = reactDOMClientModule.createRoot;
-          debugger
           // console.log(this.cre);
         }
       } catch (e) {
@@ -76,7 +73,6 @@ export class ReactService {
       if (reactDOMModule && reactDOMModule.render) {
         return {
           render: (element: any) => {
-            debugger
             reactDOMModule.render(element, container);
           },
           unmount: () => {
@@ -133,7 +129,6 @@ export class ReactService {
    */
   static createReactRoot(container: HTMLElement): any {
     const createRoot = this.getCreateRoot();
-    debugger
     if (!createRoot) {
       console.warn('createRoot not available, using fallback implementation');
       return this.createFallbackCreateRoot(container);
@@ -211,5 +206,13 @@ export class ReactService {
 
   getStatus() {
     return ReactService.getStatus();
+  }
+
+  render(root: any, element: any) {
+    root.render(element);
+  }
+
+  destroy(root: any) {
+    root?.unmount?.();
   }
 }

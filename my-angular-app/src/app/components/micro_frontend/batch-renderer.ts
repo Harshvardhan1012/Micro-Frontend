@@ -12,7 +12,6 @@ export class BatchRenderer {
   ): Promise<void> {
     for (let i = 0; i < configs.length; i += batchSize) {
       const batch = configs.slice(i, i + batchSize);
-        debugger
       await new Promise<void>((resolve) => {
         requestIdleCallback(
           async () => {
