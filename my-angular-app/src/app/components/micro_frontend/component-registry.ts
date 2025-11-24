@@ -147,6 +147,7 @@ export class ReactComponentRegistry {
       const factory = await container.get(`./${componentName}`);
       const Module = factory();
       // Module Federation sometimes wraps default
+      debugger
       return Module?.default || Module;
     } catch (error) {
       console.error(`Error loading component ${key}:`, error);

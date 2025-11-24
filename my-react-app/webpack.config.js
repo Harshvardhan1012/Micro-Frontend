@@ -1,9 +1,16 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin')
+const path = require('path')
 
 module.exports = {
   entry: './src/index.js',
   mode: 'development',
+  resolve: {
+    extensions: ['.js', '.jsx', '.ts', '.tsx'],
+    alias: {
+      '@': path.resolve(__dirname, 'src'),
+    },
+  },
   devServer: {
     port: 3001,
     headers: {
@@ -55,7 +62,7 @@ module.exports = {
       name: 'hostApp',
       filename: 'remoteEntry.js',
       exposes: {
-        './HelloComponent': './src/heelo.jsx',
+        './HelloComponent': './src/index.js',
       },
       shared: {
         react: {
@@ -70,6 +77,8 @@ module.exports = {
           strictVersion: false,
           eager: false,
         },
+        'react-router': { singleton: true },
+        'react-router-dom': { singleton: true },
       },
     }),
     new HtmlWebpackPlugin({

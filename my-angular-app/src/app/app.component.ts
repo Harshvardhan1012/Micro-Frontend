@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { ReactHostComponent } from './components/micro_frontend/react-host.component';
 import { RouterLinkWithHref } from "@angular/router";
+import { ReactWrapperComponent } from "./components/micro_frontend/react-wrapper.component";
 
 @Component({
   selector: 'app-home',
@@ -10,24 +11,23 @@ import { RouterLinkWithHref } from "@angular/router";
       <!-- Your new app-hello component -->
       sdf
 
-      <react-host
+      <!-- <react-host
         componentName="HelloComponent"
         microfrontendName="hostApp"
-        [props]="{ text: 'Hi', name: 'Harsh User' }"
       >
       </react-host>
 
       <react-host
         componentName="HelloComponent"
         microfrontendName="hostApp"
-        [props]="{ text: 'Hidsfdsf', name: 'Harsh Userdsfsdf' }"
       >
-      </react-host>
+      </react-host> -->
+      <app-react-wrapper></app-react-wrapper>
       <a routerLink="new">Go to New Component</a>
     </div>
   `,
   standalone: true,
-  imports: [CommonModule, ReactHostComponent, RouterLinkWithHref],
+  imports: [CommonModule, RouterLinkWithHref, ReactWrapperComponent],
 })
 export class AppComponent {
   // No additional properties needed for this simple demo

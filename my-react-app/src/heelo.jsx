@@ -36,3 +36,6 @@ export const ReactUtils = {
     }
   }
 };
+
+
+export default HelloComponent;

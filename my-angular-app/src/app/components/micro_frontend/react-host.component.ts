@@ -68,9 +68,10 @@ export class ReactHostComponent implements AfterViewInit, OnDestroy, OnChanges {
       this.root = ReactService.createReactRoot(this.containerRef.nativeElement);
     }
 
+
     // Create React element with props
     const element = ReactService.createElement(this.componentRef, this.props);
-
+    debugger
     // Render into Angular container
     if (this.root) {
       this.root.render(element);

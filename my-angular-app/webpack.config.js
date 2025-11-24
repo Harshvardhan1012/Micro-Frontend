@@ -83,6 +83,8 @@ module.exports = {
           requiredVersion: false,
           eager: true,
         },
+        'react-router': { singleton: true },
+        'react-router-dom': { singleton: true },
       },
     }),
     new HtmlWebpackPlugin({
